@@ -1,0 +1,37 @@
+{
+  "name": "@lvce-editor/file-permission-process-monorepo",
+  "version": "0.0.0-dev",
+  "description": "File Permission Process Monorepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lvce-editor/file-permission-process.git"
+  },
+  "license": "MIT",
+  "author": "Lvce Editor",
+  "type": "module",
+  "scripts": {
+    "build": "node packages/build/src/build.js",
+    "build:watch": "./packages/build/node_modules/.bin/esbuild --format=esm --platform=node --bundle --external:@vscode/sudo-prompt --external:ws --watch packages/file-permission-process/src/filePermissionProcessMain.ts --outfile=packages/file-permission-process/dist/index.js",
+    "format": "prettier --write .",
+    "postinstall": "lerna bootstrap --ci",
+    "lint": "eslint .",
+    "test": "lerna run test",
+    "type-check": "tsc -b"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 130
+  },
+  "devDependencies": {
+    "@lerna/legacy-package-management": "^8.2.4",
+    "@lvce-editor/eslint-config": "^17.4.0",
+    "eslint": "^10.7.0",
+    "lerna": "^8.2.3",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
