@@ -20,7 +20,8 @@ const toString = (value: string | Buffer | undefined): string => {
 }
 
 export const promptWithExec = (exec: SudoPromptExec, command: string, options: PromptOptions = {}): Promise<PromptResult> => {
-  return new Promise((resolve, reject) => {
+  const { promise, reject, resolve } = Promise.withResolvers<PromptResult>()
+  try {
     exec(command, { name: 'Lvce Editor', ...options }, (error, stdout, stderr) => {
       if (error) {
         reject(error)
@@ -31,7 +32,10 @@ export const promptWithExec = (exec: SudoPromptExec, command: string, options: P
         stdout: toString(stdout),
       })
     })
-  })
+  } catch (error) {
+    reject(error)
+  }
+  return promise
 }
 
 export const prompt = async (command: string, options: PromptOptions = {}): Promise<PromptResult> => {
