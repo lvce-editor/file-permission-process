@@ -6,5 +6,5 @@ test('listen is a function', () => {
 })
 
 test('listen throws error for invalid argv', async () => {
-  await expect(Listen.listen([])).rejects.toThrow('[file-system-process] unknown ipc type')
+  await expect(Listen.listen([])).rejects.toThrow('[file-permission-process] unknown ipc type')
 })
