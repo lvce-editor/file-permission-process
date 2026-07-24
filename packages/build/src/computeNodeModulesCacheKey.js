@@ -1,28 +1,11 @@
 import { createHash } from 'node:crypto'
-import { existsSync, readdirSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { root } from './root.js'
 
-const getPackageLocations = () => {
-  const packageLocations = []
-  const packagesFolder = join(root, 'packages')
-  const dirents = readdirSync(packagesFolder, {
-    withFileTypes: true,
-  })
-  for (const dirent of dirents) {
-    const relativePath = `packages/${dirent.name}/package-lock.json`
-    if (dirent.isDirectory() && existsSync(join(root, relativePath))) {
-      packageLocations.push(relativePath)
-    }
-  }
-  packageLocations.push('package-lock.json')
-  return packageLocations
-}
-
 const locations = [
-  'lerna.json',
-  ...getPackageLocations(),
+  'package.json',
+  'package-lock.json',
   '.github/workflows/pr.yml',
   '.github/workflows/ci.yml',
   '.github/workflows/release.yml',
