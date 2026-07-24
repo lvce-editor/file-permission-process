@@ -24,7 +24,7 @@ const options = {
     },
     inlineDynamicImports: true,
   },
-  external: ['@vscode/sudo-prompt', 'ws'],
+  external: ['@vscode/sudo-prompt', 'electron', 'ws'],
   plugins: [
     babel({
       babelHelpers: 'bundled',
