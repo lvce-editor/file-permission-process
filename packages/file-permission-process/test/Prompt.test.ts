@@ -51,6 +51,15 @@ test('promptWithExec rejects errors', async () => {
   await expect(Prompt.promptWithExec(exec, 'false')).rejects.toBe(error)
 })
 
+test('promptWithExec rejects synchronous errors', async () => {
+  const error = new Error('failed to execute')
+  const exec = jest.fn<Prompt.SudoPromptExec>(() => {
+    throw error
+  })
+
+  await expect(Prompt.promptWithExec(exec, 'false')).rejects.toBe(error)
+})
+
 test('prompt rejects an empty command', async () => {
   await expect(Prompt.prompt('')).rejects.toThrow('command must be a non-empty string')
 })
