@@ -1,7 +1,7 @@
-# File System Process
+# File Permission Process
 
-File System Process
+Provides an RPC command for running a non-graphical command with elevated
+permissions through `@vscode/sudo-prompt`.
 
-## Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/lvce-editor/file-system-process)
+The prompt and elevated command are one operation: prompting once does not make
+the file permission process privileged for later calls.

@@ -24,13 +24,6 @@ const locations = [
   'packages/build/src/computeNodeModulesCacheKey.js',
 ]
 
-const packagesFolder = join(root, 'packages')
-
-const dirents = readdirSync(packagesFolder)
-for (const dirent of dirents) {
-  locations.push(`packages/${dirent}/package-lock.json`)
-}
-
 const getAbsolutePath = (relativePath) => {
   return join(root, relativePath)
 }

@@ -1,21 +1,21 @@
 {
-  "name": "@lvce-editor/file-system-process",
+  "name": "@lvce-editor/file-permission-process",
   "version": "0.0.0-dev",
-  "description": "File System Process",
+  "description": "File Permission Process",
   "keywords": [
     "Lvce Editor",
-    "File System"
+    "File Permissions"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lvce-editor/file-system-process.git"
+    "url": "git+https://github.com/lvce-editor/file-permission-process.git"
   },
   "license": "MIT",
   "author": "Lvce Editor",
   "type": "module",
-  "main": "src/fileSystemProcessMain.ts",
+  "main": "src/filePermissionProcessMain.ts",
   "bin": {
-    "file-system-process": "bin/fileSystemProcess.js"
+    "file-permission-process": "bin/filePermissionProcess.js"
   },
   "scripts": {
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
@@ -47,16 +47,13 @@
     }
   },
   "dependencies": {
-    "@lvce-editor/assert": "^1.5.1",
     "@lvce-editor/rpc": "^6.4.0",
     "@lvce-editor/rpc-registry": "^9.26.0",
-    "@lvce-editor/verror": "^1.7.0",
-    "trash": "^10.1.1"
+    "@vscode/sudo-prompt": "^9.3.2"
   },
   "devDependencies": {
     "@jest/globals": "^30.2.0",
     "@types/node": "^25.0.7",
-    "electron": "^42.4.0",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.11"
   },

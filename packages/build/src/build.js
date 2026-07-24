@@ -57,7 +57,7 @@ await bundleJs()
 
 const version = await getVersion()
 
-const packageJson = await readJson(join(root, 'packages', 'file-system-process', 'package.json'))
+const packageJson = await readJson(join(root, 'packages', 'file-permission-process', 'package.json'))
 
 delete packageJson.scripts
 delete packageJson.devDependencies
@@ -66,11 +66,8 @@ delete packageJson.jest
 delete packageJson.xo
 delete packageJson.directories
 delete packageJson.nodemonConfig
-delete packageJson.dependencies['@lvce-editor/assert']
 delete packageJson.dependencies['@lvce-editor/rpc']
 delete packageJson.dependencies['@lvce-editor/rpc-registry']
-delete packageJson.dependencies['@lvce-editor/json-rpc']
-delete packageJson.dependencies['@lvce-editor/verror']
 const wsVersion = await getWsVersionFromLockfile()
 packageJson.dependencies['ws'] = wsVersion
 packageJson.version = version
@@ -80,7 +77,7 @@ await writeJson(join(dist, 'package.json'), packageJson)
 
 await mkdir(join(dist, 'bin'))
 await writeFile(
-  join(dist, 'bin', 'fileSystemProcess.js'),
+  join(dist, 'bin', 'filePermissionProcess.js'),
   `#!/usr/bin/env node
 
 import '../dist/index.js'

@@ -9,7 +9,7 @@ import { root } from './root.js'
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-  input: join(root, 'packages/file-system-process/src/fileSystemProcessMain.ts'),
+  input: join(root, 'packages/file-permission-process/src/filePermissionProcessMain.ts'),
   preserveEntrySignatures: 'strict',
   treeshake: {
     propertyReadSideEffects: false,
@@ -24,7 +24,7 @@ const options = {
     },
     inlineDynamicImports: true,
   },
-  external: ['@lvce-editor/ripgrep', 'electron', 'execa', 'tmp-promise', 'open', 'tail', 'ws', 'trash'],
+  external: ['@vscode/sudo-prompt', 'ws'],
   plugins: [
     babel({
       babelHelpers: 'bundled',
